@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Property Listings</title>
+</head>
+<body>
+    {% for city, properties in city_properties.items() %}
+    <h2>{{ city }}</h2>
+    <div style="display: flex; flex-wrap: wrap;">
+        {% for _, property in properties.iterrows() %}
+        <div style="width: 30%; padding: 10px; border: 1px solid #ccc; margin: 10px;">
+            <h3><a href="/property/{{ property['Property ID'] }}">{{ property['Property Name'] }}</a></h3>
+            <a href="/property/{{ property['Property ID'] }}">
+                <img src="{{ property['Image Link'] }}" alt="Property Image" style="max-width: 100%; height: auto;">
+            </a>
+            <p>Rent: {{ property['Rent'] }}</p>
+            <p>Size: {{ property['Size'] }}</p>
+            <p>City: {{ property['City'] }}</p>
+            <p>Posted On: {{ property['Posted On'] }}</p>
+            <p>BHK: {{ property['BHK'] }}</p>
+            <p>Bathroom: {{ property['Bathroom'] }}</p>
+            <!-- Add more property details here -->
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Button to show more properties in the current city -->
+    <form action="/more-properties" method="get">
+        <input type="hidden" name="city" value="{{ city }}">
+        <button type="submit">More Properties in {{ city }}</button>
+    </form>
+    {% endfor %}
+</body>
+</html>

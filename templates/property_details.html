@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ property['Property Name'] }} Details</title>
+</head>
+<body>
+    <h2>{{ property['Property Name'] }} Details</h2>
+    <div>
+        <img src="{{ property['Image Link'] }}" alt="Property Image" style="max-width: 100%; height: auto;">
+        <!-- <p>{{ property['Property ID'] }}</p> -->
+        <p>Rent: {{ property['Rent'] }}</p>
+        <p>Size: {{ property['Size'] }}</p>
+        <p>City: {{ property['City'] }}</p>
+        <p>Posted On: {{ property['Posted On'] }}</p>
+        <p>BHK: {{ property['BHK'] }}</p>
+        <p>Bathroom: {{ property['Bathroom'] }}</p>
+        <!-- <form action="/interactions/{{ user_id }}/{{ property['Property ID'] }}/favorite" method="POST">
+            <button type="submit">Add to Favorites</button>
+        </form> -->
+        
+        <!-- <button id="favorite-button">&#10084; Mark as Favorite</button> -->
+        <!-- Add more property details here -->
+    </div>
+
+    <h3>Recommended Properties</h3>
+    <div style="display: flex; flex-wrap: wrap;">
+        {% for _, recommended_property in recommended_properties.iterrows() %}
+        <div style="width: 30%; padding: 10px; border: 1px solid #ccc; margin: 10px;">
+            <h3><a href="/property/{{ recommended_property['Property ID'] }}">{{ recommended_property['Property Name'] }}</a></h3>
+            <a href="/property/{{ recommended_property['Property ID'] }}">
+                <img src="{{ recommended_property['Image Link'] }}" alt="Recommended Property Image" style="max-width: 100%; height: auto;">
+            </a>
+            <p>Rent: {{ recommended_property['Rent'] }}</p>
+            <p>Size: {{ recommended_property['Size'] }}</p>
+            <p>City: {{ recommended_property['City'] }}</p>
+            <p>Posted On: {{ recommended_property['Posted On'] }}</p>
+            <p>BHK: {{ recommended_property['BHK'] }}</p>
+            <p>Bathroom: {{ recommended_property['Bathroom'] }}</p>
+            <!-- Add more property details here -->
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

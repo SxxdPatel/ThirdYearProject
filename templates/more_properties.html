@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>More Properties in {{ city }}</title>
+</head>
+<body>
+    <h2>More Properties in {{ city }}</h2>
+    <div style="display: flex; flex-wrap: wrap;">
+        {% for _, property in more_properties.iterrows() %}
+        <div style="width: 30%; padding: 10px; border: 1px solid #ccc; margin: 10px;">
+            <h3><a href="/property/{{ property['Property ID'] }}">{{ property['Property Name'] }}</a></h3>
+            <a href="/property/{{ property['Property ID'] }}">
+                <img src="{{ property['Image Link'] }}" alt="Property Image" style="max-width: 100%; height: auto;">
+            </a>
+            <p>Rent: {{ property['Rent'] }}</p>
+            <p>Size: {{ property['Size'] }}</p>
+            <p>City: {{ property['City'] }}</p>
+            <p>Posted On: {{ property['Posted On'] }}</p>
+            <p>BHK: {{ property['BHK'] }}</p>
+            <p>Bathroom: {{ property['Bathroom'] }}</p>
+            <!-- Add more property details here -->
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
